@@ -77,4 +77,7 @@ public interface TimetableService {
 	void feederPronote(String structureId, final String path, final String domain,
 			final String acceptLanguage, boolean uai, final Handler<Either<JsonObject, JsonObject>> handler);
 
+	void feederPronote(String structureId, final String path, final String domain,
+			final String acceptLanguage, boolean uai, final Handler<Either<JsonObject, JsonObject>> handler);
+
 }
