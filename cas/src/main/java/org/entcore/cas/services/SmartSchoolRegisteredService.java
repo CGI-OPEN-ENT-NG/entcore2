@@ -41,7 +41,7 @@ public class SmartSchoolRegisteredService extends AbstractCas20ExtensionRegister
             rootElement.appendChild(createTextElement(FIRSTNAME, data.getString(FIRSTNAME, ""), doc));
             rootElement.appendChild(createTextElement(LASTNAME, data.getString(LASTNAME, ""), doc));
             rootElement.appendChild(createTextElement(EMAIL, data.getString(EMAIL, ""), doc));
-            rootElement.appendChild(createTextElement(RIGHT, getRight(userFunctions), doc));
+            rootElement.appendChild(createTextElement(RIGHT, getRight(data.getJsonArray("profiles")), doc));
             rootElement.appendChild(createTextElement(ACTIVE_STRUCTURE, data.getJsonArray("structures", new JsonArray()).getString(0), doc)); //TODO Retrieve active structure from data
             addStringArray(STRUCTURE, data.getJsonArray("structures", new JsonArray()), doc, rootElement);
             addStringArray(FUNCTION,  userFunctions, doc, rootElement);
@@ -61,15 +61,15 @@ public class SmartSchoolRegisteredService extends AbstractCas20ExtensionRegister
     }
 
     private String getRight(JsonArray functions) {
-        if (functions.contains("")) {
+        if (functions.contains("Personnel")) {
             return RIGHTS.ADMIN.toString();
         }
 
-        if (functions.contains("")) {
+        if (functions.contains("Teacher")) {
             return RIGHTS.CHECKER.toString();
         }
 
-        if (functions.contains("")) {
+        if (functions.contains("Student")) {
             return RIGHTS.EDITOR.toString();
         }
 
