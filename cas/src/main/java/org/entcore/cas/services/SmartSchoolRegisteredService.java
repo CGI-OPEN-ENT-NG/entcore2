@@ -52,12 +52,12 @@ public class SmartSchoolRegisteredService extends AbstractCas20ExtensionRegister
     }
 
     private void addStringArray(String casLabel, JsonArray data, Document doc, Element rootElement){
-        Element root = createElement(casLabel+"s", doc);
+//        Element root = createElement(casLabel+"s", doc);
         for(Object item: data){
-            if (item != null) root.appendChild(createTextElement(casLabel, (String) item, doc));
+            if (item != null) rootElement.appendChild(createTextElement(casLabel, (String) item, doc));
         }
 
-        rootElement.appendChild(root);
+//        rootElement.appendChild(root);
     }
 
     private String getRight(JsonArray functions) {
