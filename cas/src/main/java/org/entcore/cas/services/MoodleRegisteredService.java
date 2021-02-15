@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 
 import java.util.List;
 
-public class MoodleRegisteredService extends UidRegisteredService {
+public class MoodleRegisteredService extends UuidRegisteredService {
 
     @Override
     protected void prepareUserCas20(User user, String userId, String service, JsonObject data, Document doc, List<Element> additionnalAttributes) {
