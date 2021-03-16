@@ -22,7 +22,11 @@ subprojects {
 	repositories {
   mavenLocal()
   maven {
-    url "https://maven.opendigitaleducation.com/nexus/content/groups/public"
+    url "https://nexus-pic2.support-ent.fr/repository/maven-releases/"
+    credentials {
+	username "${odeUsername}"
+	password "${odePassword}"
+    }
   }
   mavenCentral()
   jcenter()
