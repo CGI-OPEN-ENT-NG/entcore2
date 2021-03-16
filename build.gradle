@@ -28,6 +28,10 @@ subprojects {
 	password "${odePassword}"
     }
   }
+  
+  maven {
+    url "https://maven.opendigitaleducation.com/nexus/repository/public/"
+  }
   mavenCentral()
   jcenter()
   maven {
