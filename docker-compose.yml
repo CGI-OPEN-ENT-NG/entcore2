@@ -4,9 +4,9 @@ gradle:
   volumes:
     - $PWD:$PWD
     - ./:/home/gradle/project
-    - ~/.m2:/home/gradle/.m2
-    - ~/.gradle:/home/gradle/.gradle
-    - /var/run/docker.sock:/var/run/docker.sock
+    #- ~/.m2:/home/gradle/.m2
+    #- ~/.gradle:/home/gradle/.gradle
+    #- /var/run/docker.sock:/var/run/docker.sock
 
 node:
   image: opendigitaleducation/node
