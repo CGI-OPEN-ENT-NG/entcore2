@@ -34,7 +34,7 @@ public class SmartSchoolRegisteredService extends AbstractCas20ExtensionRegister
     @Override
     protected void prepareUserCas20(User user, String userId, String service, JsonObject data, Document doc, List<Element> additionnalAttributes) {
         try {
-            JsonArray userFunctions = data.getJsonArray("functions", new JsonArray()).getJsonArray(0);
+//            JsonArray userFunctions = data.getJsonArray("functions", new JsonArray()).getJsonArray(0);
 
             user.setUser(data.getString("id"));
             Element rootElement = createElement(EA_ATTRIBUTES, doc);
@@ -44,7 +44,7 @@ public class SmartSchoolRegisteredService extends AbstractCas20ExtensionRegister
             rootElement.appendChild(createTextElement(RIGHT, getRight(data.getJsonArray("profiles")), doc));
             rootElement.appendChild(createTextElement(ACTIVE_STRUCTURE, data.getJsonArray("structures", new JsonArray()).getString(0), doc)); //TODO Retrieve active structure from data
             addStructures(data.getJsonArray("structureNodes", new JsonArray()), doc, rootElement);
-            addStringArray(FUNCTION,  userFunctions, doc, rootElement);
+//            addStringArray(FUNCTION,  userFunctions, doc, rootElement);
             additionnalAttributes.add(rootElement);
         } catch (Exception e) {
             log.error("Failed to transform user for SmartSchool CAS response", e);
