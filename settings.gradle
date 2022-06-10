@@ -1,4 +1,3 @@
-include 'infra', 'auth', 'directory', 'workspace', 'app-registry', 'session', 'communication', 'portal', 'test', 'tests','common', 'conversation', 'feeder','archive', 'timeline', 'cas', 'admin'
 pluginManagement {
   repositories {
     maven {
@@ -7,3 +6,4 @@ pluginManagement {
     }
   }
 }
+include 'infra', 'auth', 'directory', 'workspace', 'app-registry', 'session', 'communication', 'portal', 'test', 'tests','common', 'conversation', 'feeder','archive', 'timeline', 'cas', 'admin'
