@@ -1,9 +1,9 @@
 include 'infra', 'auth', 'directory', 'workspace', 'app-registry', 'session', 'communication', 'portal', 'test', 'tests','common', 'conversation', 'feeder','archive', 'timeline', 'cas', 'admin'
 pluginManagement {
-repositories {
-maven {
-name ‘nexuscgi’
-url ‘https://nexus-pic2.support-ent.fr/repository/plugin_gradle/’
-}
-}
+  repositories {
+    maven {
+      name 'nexuscgi'
+      url 'https://nexus-pic2.support-ent.fr/repository/plugin_gradle/'
+    }
+  }
 }
