@@ -496,11 +496,16 @@ public class OAuthDataHandler extends DataHandler {
 			.put("createdAt", new JsonObject()
 					.put("$gte",
 							new JsonObject().put("$date", System.currentTimeMillis() - CODE_EXPIRES)));
+
+			log.info("getAuthInfoByCode query : " + query.encode());
 			mongo.findOne(AUTH_INFO_COLLECTION, query, new io.vertx.core.Handler<Message<JsonObject>>() {
 
 				@Override
 				public void handle(Message<JsonObject> res) {
 					JsonObject r = res.body().getJsonObject("result");
+
+					log.info("getAuthInfoByCode result : " + r.encode());
+
 					if ("ok".equals(res.body().getString("status")) && r != null && r.size() > 0) {
 						r.put("id", r.getString("_id"));
 						r.remove("_id");
