@@ -1,5 +1,7 @@
 #!/bin/bash
 
+GIT_BRANCH=dev
+
 if [ ! -e node_modules ]
 then
   mkdir node_modules

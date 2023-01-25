@@ -241,6 +241,7 @@
   "management.zimbra.return.statut.PROGRESS": "Rappel en cours depuis le ",
   "management.zimbra.return.statut.ERROR": "Erreur pendant le rappel du ",
   "management.zimbra.return.button": "Rappeler les messages",
+  "management.zimbra.return.messages": "{{nb}} message(s) à rappeler",
   "management.zimbra.return.tooltip.remove": "Supprimer la demande selectionnée.",
   "management.zimbra.return.tooltip.error": "Erreur pendant le rappel des mails, veuillez ressayer.",
   "management.zimbra.return.lightbox.list": "Vous allez rappeler les messages envoyés suivants :",

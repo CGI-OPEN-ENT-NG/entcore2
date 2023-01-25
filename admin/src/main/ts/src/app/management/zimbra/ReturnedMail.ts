@@ -10,12 +10,10 @@ export class ReturnedMail {
     comment: string;
     recipient: object;
     date: string;
-    estimatedTime: string;
     nb_message_success: number;
 
     constructor() {
         this.date = '';
-        this.estimatedTime = '';
         this.number_message = 0;
         this.nb_message_success = 0;
         this.recipient = undefined;

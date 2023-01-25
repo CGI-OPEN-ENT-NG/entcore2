@@ -145,7 +145,6 @@ export class ZimbraComponent extends OdeComponent implements OnInit {
                     this.checkboxesMail[mail.id] = false;
                     mail.nb_message_success = 0; // todo: temp
                     mail.statutDisplayed = this.bundles.translate('management.zimbra.return.statut.' + mail.statut);
-                    mail.estimatedTime = this._secondsToHms(mail.number_message);
                 });
                 this.changeDetector.detectChanges();
             },

@@ -83,10 +83,13 @@
                 {{ returnedMail.date | date: 'dd/MM/yyyy HH:mm:ss'}}
             </td>
             <td>
-                <div class="progression">
+                <div class="progression" *ngIf="returnedMail.statut !== 'WAITING'">
                     <p>{{ returnedMail.nb_message_success }}/{{ returnedMail.number_message }}</p>
                     <mat-progress-bar mode="determinate" [value]="returnedMail.progress" color="primary"></mat-progress-bar>
                 </div>
+                <p *ngIf="returnedMail.statut === 'WAITING'">
+                    {{ 'management.zimbra.return.messages' | translate:{ nb: returnedMail.number_message } }}
+                </p>
             </td>
             <td [title]="('management.zimbra.return.tooltip.remove' | translate)"
                 (click)="openDeleteLightBox(returnedMail)"
