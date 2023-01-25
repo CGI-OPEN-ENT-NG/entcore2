@@ -46,14 +46,11 @@
             <th>
                 <s5l>management.zimbra.return.tab.comment</s5l>
             </th>
-            <th class="width10">
-                <s5l>management.zimbra.return.tab.message</s5l>
-            </th>
             <th class="width20">
                 <s5l>management.zimbra.return.tab.statut</s5l>
             </th>
             <th>
-                <s5l>management.zimbra.return.tab.estimated</s5l>
+                <s5l>management.zimbra.return.tab.progress</s5l>
             </th>
             <th class="width10"></th>
         </tr>
@@ -68,7 +65,6 @@
             <td>{{ returnedMail.user_name }}</td>
             <td (click)="openDetailLightBox(returnedMail)">{{ returnedMail.object }}</td>
             <td (click)="openDetailLightBox(returnedMail)">{{ returnedMail.comment }}</td>
-            <td>{{ returnedMail.number_message }}</td>
             <td [title]="returnedMail.statut === 'ERROR' ? ('management.zimbra.return.tooltip.error' | translate) : ''">
                 <span *ngIf="returnedMail.statut == 'ERROR'">
                     <i class='fa fa-paper-plane is-danger is-size-5'></i>
@@ -86,9 +82,15 @@
                 <br>
                 {{ returnedMail.date | date: 'dd/MM/yyyy HH:mm:ss'}}
             </td>
-            <td>{{ returnedMail.estimatedTime }} </td>
+            <td>
+                <div class="progression">
+                    <p>{{ returnedMail.nb_message_success }}/{{ returnedMail.number_message }}</p>
+                    <mat-progress-bar mode="determinate" [value]="returnedMail.progress" color="primary"></mat-progress-bar>
+                </div>
+            </td>
             <td [title]="('management.zimbra.return.tooltip.remove' | translate)"
-                (click)="openDeleteLightBox(returnedMail)">
+                (click)="openDeleteLightBox(returnedMail)"
+                style="text-align: center;">
                 <span *ngIf="returnedMail.statut != 'PROGRESS'">
                     <i class='fa fa-remove is-danger is-size-3'></i>
                 </span>

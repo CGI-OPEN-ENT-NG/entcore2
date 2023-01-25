@@ -40,6 +40,7 @@ import {CalendarService} from './calendar/calendar.service';
 import {ImportEDTReportsService} from './import-edt/import-edt-reports.service';
 import {SubjectsGuardService} from './subjects/subjects-guard.service';
 import { StructureAttachmentComponent } from './structure-attachment/structure-attachment.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
     imports: [
@@ -51,6 +52,7 @@ import { StructureAttachmentComponent } from './structure-attachment/structure-a
         MatPaginatorModule,
         MatSortModule,
         MatTableModule,
+        MatProgressBarModule,
         NgxTrumbowygModule.withConfig({
             svgPath: '/admin/public/dist/assets/trumbowyg/icons.svg',
             removeformatPasted: true,

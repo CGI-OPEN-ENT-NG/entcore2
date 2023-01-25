@@ -37,4 +37,11 @@
   color: orange;
 }
 
+.progression {
+  display: flex;
+  align-items: center;
 
+  p {
+    margin-right: 10px;
+  }
+}

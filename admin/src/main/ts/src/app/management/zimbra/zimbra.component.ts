@@ -139,10 +139,11 @@ export class ZimbraComponent extends OdeComponent implements OnInit {
      */
     private _getReturnedMails(): void {
         this.subscriptions.add(this.zimbraService.getReturnedMails(this.structure.id).subscribe(
-            (returnedMails) => {
+            (returnedMails: ReturnedMail[]) => {
                 this.returnedMails = returnedMails;
                 this.returnedMails.forEach(mail => {
                     this.checkboxesMail[mail.id] = false;
+                    mail.nb_message_success = 0; // todo: temp
                     mail.statutDisplayed = this.bundles.translate('management.zimbra.return.statut.' + mail.statut);
                     mail.estimatedTime = this._secondsToHms(mail.number_message);
                 });
