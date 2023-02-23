@@ -32,6 +32,14 @@ subprojects {
   maven {
     url "https://oss.sonatype.org/content/repositories/snapshots"
   }
+
+  maven {
+    url 'https://nexus-pic2.support-ent.fr/repository/maven-snapshots/'
+    credentials {
+      username "${odeUsername}"
+      password "${odePassword}"
+    }
+  }
   maven { url "https://plugins.gradle.org/m2/" }
 	}
 
