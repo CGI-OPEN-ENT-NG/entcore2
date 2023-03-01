@@ -422,12 +422,15 @@ public class OAuthDataHandler extends DataHandler {
 
 	@Override
 	public void createOrUpdateAccessToken(final AuthInfo authInfo, final Handler<AccessToken> handler) {
+		log.info("createOrUpdateAccessToken :", authInfo.getId());
 		if (authInfo != null) {
 			final JsonObject query = new JsonObject().put("authId", authInfo.getId());
+
 			mongo.count(ACCESS_TOKEN_COLLECTION, query,
 					new io.vertx.core.Handler<Message<JsonObject>>() {
 				@Override
 				public void handle(Message<JsonObject> event) {
+					log.info("createOrUpdateAccessToken : count", event.body().getInteger("count", 0));
 					if ("ok".equals(event.body().getString("status")) &&
 							(event.body().getInteger("count", 1) == 0 || isNotEmpty(authInfo.getRefreshToken()))) {
 						final JsonObject token = new JsonObject()
@@ -490,17 +493,23 @@ public class OAuthDataHandler extends DataHandler {
 
 	@Override
 	public void getAuthInfoByCode(String code, final Handler<AuthInfo> handler) {
+		log.info("getAuthInfoByCode: " + code);
 		if (code != null && !code.trim().isEmpty()) {
 			JsonObject query = new JsonObject()
 			.put("code", code)
 			.put("createdAt", new JsonObject()
 					.put("$gte",
 							new JsonObject().put("$date", System.currentTimeMillis() - CODE_EXPIRES)));
+
+			log.info("query: " + query.encodePrettily());
 			mongo.findOne(AUTH_INFO_COLLECTION, query, new io.vertx.core.Handler<Message<JsonObject>>() {
 
 				@Override
 				public void handle(Message<JsonObject> res) {
 					JsonObject r = res.body().getJsonObject("result");
+
+					log.info("result: " + r.encodePrettily());
+
 					if ("ok".equals(res.body().getString("status")) && r != null && r.size() > 0) {
 						r.put("id", r.getString("_id"));
 						r.remove("_id");
