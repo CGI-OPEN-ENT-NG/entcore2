@@ -350,12 +350,14 @@ public class AuthController extends BaseController {
 
 	@Post("/oauth2/token")
 	public void token(final HttpServerRequest request) {
+        log.info("@Post(/oauth2/token)");
 		request.setExpectMultipart(true);
 		request.endHandler(new io.vertx.core.Handler<Void>() {
 
 			@Override
 			public void handle(Void v) {
 				final Request req = new HttpServerRequestAdapter(request);
+                log.info("token handleRequest");
 				token.handleRequest(req, new Handler<Response>() {
 
 					@Override
@@ -378,6 +380,7 @@ public class AuthController extends BaseController {
 					}
 
 					private void oauthTokenHandle(Response response) {
+                        log.info("oauthTokenHandle");
 						if (response.getCode() == 200 && ("password".equals(req.getParameter("grant_type")) ||
 								"refresh_token".equals(req.getParameter("grant_type")) ||
 								"saml2".equals(req.getParameter("grant_type")) ||
