@@ -23,10 +23,15 @@ export const adaptiveHeight = ng.directive('adaptiveHeight', [() => {
                             element.css({"height": Math.min(entry.devicePixelContentBoxSize[0].blockSize,800)+'px'});
                             break;
                         } if (entry.contentBoxSize) {
-                            // Computed value
+                            // Content-box value, if available
                             element.css({"height": Math.min(entry.contentBoxSize[0].blockSize,800)+'px'});
                             break;
-                        } else {
+                        } if (entry.contentRect) {
+                            // Content-rect value, if available
+                            element.css({"height": Math.min(entry.contentRect.height+10,800)+'px'});
+                            break;
+                        }
+                        else {
                             // Default value, if size is not well known
                             element.css({"height": Math.min(entry.target.scrollHeight+110||1000,800)+'px'});
                         }
